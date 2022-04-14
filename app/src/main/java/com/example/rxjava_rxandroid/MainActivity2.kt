@@ -133,19 +133,19 @@ class MainActivity2 : AppCompatActivity() {
 //                    Log.d(TAG, "onComplete")
 //                }
 //            )
-             /*   bufferOperator()
-            .buffer(3)
-            .subscribe(
-                {
-                    Log.d(TAG, "onNext: $it")
-                },
-                {
-                    Log.d(TAG, "onError: $it")
-                },
-                {
-                    Log.d(TAG, "onComplete")
-                }
-            )*/
+        /*   bufferOperator()
+       .buffer(3)
+       .subscribe(
+           {
+               Log.d(TAG, "onNext: $it")
+           },
+           {
+               Log.d(TAG, "onError: $it")
+           },
+           {
+               Log.d(TAG, "onComplete")
+           }
+       )*/
 
 
         /*mapOperator()
@@ -165,11 +165,83 @@ class MainActivity2 : AppCompatActivity() {
                 }
             )*/
 
-        flatMapOperator()
-            .map {
+        /*flatMapOperator()
+            .flatMap {
                 //it.age + 5
-                UserProfile(it.id, it.name, it.age, "https://test.com/${it.id}")
+                getUserProfile(it.id)
             }
+            .subscribe(
+                {
+                    Log.d(TAG, "onNext: $it")
+                },
+                {
+                    Log.d(TAG, "onError: $it")
+                },
+                {
+                    Log.d(TAG, "onComplete")
+                }
+            )*/
+        /*flatMapOperator2()
+            .flatMap {
+                //it.age + 5
+                Observable.fromIterable(it)
+            }
+            .flatMap { getUserProfile(it.id) }
+         //   .map { getUserProfile(it.id) }
+            .subscribe(
+                {
+                    Log.d(TAG, "onNext: $it")
+                },
+                {
+                    Log.d(TAG, "onError: $it")
+                },
+                {
+                    Log.d(TAG, "onComplete")
+                }
+            )*/
+        /*groupByOperator()
+            .groupBy {
+                it.age
+            }
+            //.filter { it.key == 23 }
+            .flatMapSingle { group -> group.toList()  }
+            .subscribe(
+                {
+                    Log.d(TAG, "onNext $it")
+                },
+                {
+                    Log.d(TAG, "onError: $it")
+                },
+                {
+                    Log.d(TAG, "onComplete")
+                }
+            )*/
+
+        /*mergeOperator()
+           .subscribe(
+               {
+                   Log.d(TAG, "onNext: $it")
+               },
+               {
+                   Log.d(TAG, "onError: $it")
+               },
+               {
+                   Log.d(TAG, "onComplete")
+               }
+           )*/
+        /*concatOperator()
+            .subscribe(
+                {
+                    Log.d(TAG, "onNext: $it")
+                },
+                {
+                    Log.d(TAG, "onError: $it")
+                },
+                {
+                    Log.d(TAG, "onComplete")
+                }
+            )*/
+        startWithOperator()
             .subscribe(
                 {
                     Log.d(TAG, "onNext: $it")

@@ -4,6 +4,7 @@ import android.util.Log
 import io.reactivex.rxjava3.core.Observable
 import io.reactivex.rxjava3.core.ObservableOnSubscribe
 import io.reactivex.rxjava3.core.Observer
+import io.reactivex.rxjava3.core.Single
 import io.reactivex.rxjava3.disposables.Disposable
 import java.lang.Exception
 import java.util.*
@@ -22,7 +23,7 @@ val mUserList = mutableListOf<User>(
     User(9,"demo9", 26),
     User(7,"demo7", 27),
     User(8,"demo8", 27),
-    User(8,"demo8", 27),
+   // User(8,"demo8", 27),
 )
 
 val mUserProfileList = mutableListOf<UserProfile>(
@@ -172,9 +173,46 @@ fun flatMapOperator(): Observable<User>{
     return Observable.fromIterable(mUserList)
 }
 
-fun getUserProfile(id: Long): Observable<UserProfile> {
+//fun getUserProfile(id: Long): Observable<UserProfile> {
+//    return Observable.fromIterable(mUserProfileList)
+//        .filter{
+//            it.id == id
+//        }
+//}
+
+fun flatMapOperator2(): Observable<List<User>>{
+    return Observable.just(mUserList)
+}
+
+fun groupByOperator(): Observable<User>{
+    return Observable.fromIterable(mUserList)
+}
+
+fun getUser(): Observable<User>{
+    return Observable.fromIterable(mUserList)
+}
+
+fun getUserProfile(): Observable<UserProfile>{
     return Observable.fromIterable(mUserProfileList)
-        .filter{
-            it.id == id
-        }
+}
+
+fun mergeOperator() : Observable<Any> {
+    return Observable.merge(getUser(), getUserProfile())
+}
+
+fun getNum1to100(): Observable<Int>{
+    return Observable.range(1,10)
+}
+
+fun getNum101to150(): Observable<Int>{
+    return Observable.range(101,150)
+}
+
+fun concatOperator(): Observable<Int>{
+    return Observable.concat(getNum1to100(), getNum101to150())
+}
+
+fun startWithOperator(): Observable<User>{
+ //   return getNum101to150().startWith(getNum1to100())
+    return getUser().startWith(Single.just(User(0,"demo0",10)))
 }
