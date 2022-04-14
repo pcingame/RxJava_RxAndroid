@@ -1,6 +1,6 @@
 package com.example.rxjava_rxandroid
 
-class UserProfile (
+data class UserProfile (
     val id: Long,
     val name: String,
     val age: Int,

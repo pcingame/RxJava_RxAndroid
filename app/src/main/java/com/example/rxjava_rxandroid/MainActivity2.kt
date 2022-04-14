@@ -148,9 +148,27 @@ class MainActivity2 : AppCompatActivity() {
             )*/
 
 
-        mapOperator()
+        /*mapOperator()
             .map {
-                it.age + 5
+                //it.age + 5
+                UserProfile(it.id, it.name, it.age, "https://test.com/${it.id}")
+            }
+            .subscribe(
+                {
+                    Log.d(TAG, "onNext: $it")
+                },
+                {
+                    Log.d(TAG, "onError: $it")
+                },
+                {
+                    Log.d(TAG, "onComplete")
+                }
+            )*/
+
+        flatMapOperator()
+            .map {
+                //it.age + 5
+                UserProfile(it.id, it.name, it.age, "https://test.com/${it.id}")
             }
             .subscribe(
                 {

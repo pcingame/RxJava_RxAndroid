@@ -25,6 +25,19 @@ val mUserList = mutableListOf<User>(
     User(8,"demo8", 27),
 )
 
+val mUserProfileList = mutableListOf<UserProfile>(
+    UserProfile(1,"demo1", 15, "https:test.com1"),
+    UserProfile(2,"demo2", 18, "https:test.com2"),
+    UserProfile(3,"demo3", 20, "https:test.com3"),
+    UserProfile(4,"demo4", 21, "https:test.com4"),
+    UserProfile(5,"demo5", 22, "https:test.com5"),
+    UserProfile(6,"demo6", 26, "https:test.com6"),
+    UserProfile(9,"demo9", 26, "https:test.com9"),
+    UserProfile(7,"demo7", 27, "https:test.com7"),
+    UserProfile(8,"demo8", 27, "https:test.com8"),
+    UserProfile(8,"demo8", 27, "https:test.com8"),
+)
+
 val mUserListEmpty = emptyList<User>()
 
 fun justOperator() {
@@ -153,4 +166,15 @@ fun bufferOperator(): Observable<User>{
 
 fun mapOperator(): Observable<User>{
     return Observable.fromIterable(mUserList)
+}
+
+fun flatMapOperator(): Observable<User>{
+    return Observable.fromIterable(mUserList)
+}
+
+fun getUserProfile(id: Long): Observable<UserProfile> {
+    return Observable.fromIterable(mUserProfileList)
+        .filter{
+            it.id == id
+        }
 }
